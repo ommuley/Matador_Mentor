@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matador Mentor — Campus Tutoring Marketplace</title>
+    <meta name="description" content="Matador Mentor is a campus-wide tutoring marketplace connecting Texas Tech students with qualified tutors across all subjects.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- ═══════════ SIDEBAR NAV ═══════════ -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-brand">
+            <div class="brand-icon">
+                <svg viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="18" stroke="url(#g1)" stroke-width="3"/><path d="M14 26l6-12 6 12" stroke="url(#g1)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M16.5 22h7" stroke="url(#g1)" stroke-width="2" stroke-linecap="round"/><defs><linearGradient id="g1" x1="0" y1="0" x2="40" y2="40"><stop stop-color="#e74c3c"/><stop offset="1" stop-color="#ff8a65"/></linearGradient></defs></svg>
+            </div>
+            <span class="brand-name">Matador<span class="accent">Mentor</span></span>
+        </div>
+
+        <nav class="sidebar-nav">
+            <button class="nav-btn active" data-view="dashboard" id="nav-dashboard">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+                Dashboard
+            </button>
+            <button class="nav-btn" data-view="find-tutor" id="nav-find-tutor">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
+                Find Tutor
+            </button>
+            <button class="nav-btn" data-view="bookings" id="nav-bookings">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+                Bookings
+            </button>
+            <button class="nav-btn" data-view="payments" id="nav-payments">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><path d="M1 10h22"/></svg>
+                Payments
+            </button>
+            <button class="nav-btn" data-view="reviews" id="nav-reviews">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                Reviews
+            </button>
+            <button class="nav-btn" data-view="admin" id="nav-admin">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                Admin
+            </button>
+        </nav>
+
+        <div class="sidebar-footer">
+            <div class="user-pill">
+                <div class="avatar">OM</div>
+                <div class="user-info">
+                    <span class="user-name">Om Muley</span>
+                    <span class="user-role">Student</span>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- ═══════════ MAIN CONTENT ═══════════ -->
+    <main class="main-content" id="main-content">
+
+        <!-- ── DASHBOARD VIEW ── -->
+        <section class="view active" id="view-dashboard">
+            <header class="view-header">
+                <div>
+                    <h1>Dashboard</h1>
+                    <p class="view-subtitle">Welcome back, Om. Here's your overview.</p>
+                </div>
+                <div class="header-actions">
+                    <div class="role-switcher" id="role-switcher">
+                        <button class="role-btn active" data-role="student">Student</button>
+                        <button class="role-btn" data-role="tutor">Tutor</button>
+                        <button class="role-btn" data-role="admin">Admin</button>
+                        <div class="role-indicator"></div>
+                    </div>
+                </div>
+            </header>
+
+            <div class="stats-grid">
+                <div class="stat-card" id="stat-upcoming">
+                    <div class="stat-icon blue">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+                    </div>
+                    <div class="stat-data">
+                        <span class="stat-value" data-count="3">0</span>
+                        <span class="stat-label">Upcoming Sessions</span>
+                    </div>
+                </div>
+                <div class="stat-card" id="stat-completed">
+                    <div class="stat-icon green">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                    </div>
+                    <div class="stat-data">
+                        <span class="stat-value" data-count="12">0</span>
+                        <span class="stat-label">Completed</span>
+                    </div>
+                </div>
+                <div class="stat-card" id="stat-spent">
+                    <div class="stat-icon orange">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+                    </div>
+                    <div class="stat-data">
+                        <span class="stat-value" data-count="384" data-prefix="$">$0</span>
+                        <span class="stat-label">Total Spent</span>
+                    </div>
+                </div>
+                <div class="stat-card" id="stat-rating">
+                    <div class="stat-icon purple">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <div class="stat-data">
+                        <span class="stat-value" data-count="4.7">0</span>
+                        <span class="stat-label">Avg Rating Given</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dashboard-grid">
+                <div class="card upcoming-card">
+                    <div class="card-header">
+                        <h2>Upcoming Sessions</h2>
+                        <button class="btn-text" id="btn-view-all-bookings">View All →</button>
+                    </div>
+                    <div class="session-list" id="upcoming-sessions">
+                        <!-- populated by JS -->
+                    </div>
+                </div>
+
+                <div class="card chart-card">
+                    <div class="card-header">
+                        <h2>Subject Distribution</h2>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="subject-chart"></canvas>
+                    </div>
+                    <div class="chart-legend" id="chart-legend"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── FIND TUTOR VIEW ── -->
+        <section class="view" id="view-find-tutor">
+            <header class="view-header">
+                <div>
+                    <h1>Find a Tutor</h1>
+                    <p class="view-subtitle">Search available tutors by subject and schedule.</p>
+                </div>
+            </header>
+
+            <div class="search-bar-container">
+                <div class="search-bar" id="search-bar">
+                    <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
+                    <input type="text" id="search-input" placeholder="Search by name, subject, or keyword..." autocomplete="off">
+                </div>
+                <div class="filter-row">
+                    <select id="filter-subject" class="filter-select">
+                        <option value="">All Subjects</option>
+                        <option value="CS4354">CS4354 — Database Systems</option>
+                        <option value="CS3364">CS3364 — Algorithms</option>
+                        <option value="CS4352">CS4352 — Operating Systems</option>
+                        <option value="CS1411">CS1411 — Programming I</option>
+                        <option value="CS1412">CS1412 — Programming II</option>
+                        <option value="MATH2450">MATH2450 — Calculus III</option>
+                        <option value="PHYS1408">PHYS1408 — Physics I</option>
+                    </select>
+                    <select id="filter-mode" class="filter-select">
+                        <option value="">Any Mode</option>
+                        <option value="online">Online</option>
+                        <option value="in-person">In-Person</option>
+                        <option value="hybrid">Hybrid</option>
+                    </select>
+                    <select id="filter-sort" class="filter-select">
+                        <option value="rating">Highest Rated</option>
+                        <option value="price-low">Lowest Price</option>
+                        <option value="price-high">Highest Price</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- SQL Query Preview -->
+            <details class="sql-preview" id="sql-preview-find">
+                <summary>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                    View Generated SQL Query
+                </summary>
+                <pre><code id="sql-code-find">-- Dynamic query generated based on filters
+SELECT 
+    t.user_id, u.first_name, u.last_name,
+    t.hourly_rate, t.meeting_mode,
+    AVG(r.rating) AS avg_rating,
+    COUNT(r.review_id) AS total_reviews
+FROM TUTOR t
+JOIN USER u ON t.user_id = u.user_id
+JOIN TUTOR_SUBJECT ts ON t.user_id = ts.tutor_id
+LEFT JOIN BOOKING b ON t.user_id = b.tutor_id
+LEFT JOIN REVIEW r ON b.booking_id = r.booking_id
+WHERE ts.subject_code = ?
+GROUP BY t.user_id
+ORDER BY avg_rating DESC;</code></pre>
+            </details>
+
+            <div class="tutor-grid" id="tutor-grid">
+                <!-- populated by JS -->
+            </div>
+        </section>
+
+        <!-- ── BOOKINGS VIEW ── -->
+        <section class="view" id="view-bookings">
+            <header class="view-header">
+                <div>
+                    <h1>My Bookings</h1>
+                    <p class="view-subtitle">Manage your tutoring session bookings.</p>
+                </div>
+            </header>
+
+            <details class="sql-preview" id="sql-preview-bookings">
+                <summary>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                    View Generated SQL Query
+                </summary>
+                <pre><code>-- Query 3: Student's upcoming bookings
+SELECT b.booking_id, s.subject_code,
+       s.name AS subject_name,
+       u_tutor.first_name, u_tutor.last_name,
+       a.start_time, a.end_time,
+       a.mode, a.location, b.booking_status
+FROM BOOKING b
+JOIN SUBJECT s ON b.subject_code = s.subject_code
+JOIN USER u_tutor ON b.tutor_id = u_tutor.user_id
+JOIN AVAILABILITY_SLOT a ON b.slot_id = a.slot_id
+WHERE b.student_id = ?
+  AND b.booking_status IN ('confirmed','pending')
+ORDER BY a.start_time ASC;</code></pre>
+            </details>
+
+            <div class="tab-bar" id="booking-tabs">
+                <button class="tab active" data-tab="upcoming">Upcoming</button>
+                <button class="tab" data-tab="completed">Completed</button>
+                <button class="tab" data-tab="canceled">Canceled</button>
+            </div>
+
+            <div class="booking-list" id="booking-list">
+                <!-- populated by JS -->
+            </div>
+        </section>
+
+        <!-- ── PAYMENTS VIEW ── -->
+        <section class="view" id="view-payments">
+            <header class="view-header">
+                <div>
+                    <h1>Payments</h1>
+                    <p class="view-subtitle">Track your payment history and revenue.</p>
+                </div>
+            </header>
+
+            <details class="sql-preview">
+                <summary>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                    View Generated SQL Query
+                </summary>
+                <pre><code>-- Query 4: Total revenue from completed sessions
+SELECT SUM(p.amount) AS total_revenue
+FROM PAYMENT p
+WHERE p.payment_status = 'completed';</code></pre>
+            </details>
+
+            <div class="payments-summary" id="payments-summary">
+                <div class="pay-stat">
+                    <span class="pay-stat-label">Total Paid</span>
+                    <span class="pay-stat-value" id="total-paid">$384.00</span>
+                </div>
+                <div class="pay-stat">
+                    <span class="pay-stat-label">Completed</span>
+                    <span class="pay-stat-value" id="completed-payments">8</span>
+                </div>
+                <div class="pay-stat">
+                    <span class="pay-stat-label">Pending</span>
+                    <span class="pay-stat-value" id="pending-payments">1</span>
+                </div>
+            </div>
+
+            <div class="table-wrapper">
+                <table class="data-table" id="payment-table">
+                    <thead>
+                        <tr>
+                            <th>Payment ID</th>
+                            <th>Booking</th>
+                            <th>Amount</th>
+                            <th>Method</th>
+                            <th>Status</th>
+                            <th>Paid At</th>
+                        </tr>
+                    </thead>
+                    <tbody id="payment-tbody">
+                        <!-- populated by JS -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- ── REVIEWS VIEW ── -->
+        <section class="view" id="view-reviews">
+            <header class="view-header">
+                <div>
+                    <h1>Tutor Reviews</h1>
+                    <p class="view-subtitle">Aggregated ratings and student feedback.</p>
+                </div>
+            </header>
+
+            <details class="sql-preview">
+                <summary>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                    View Generated SQL Query
+                </summary>
+                <pre><code>-- Query 2: Aggregate tutor reviews
+SELECT t.user_id, u.first_name, u.last_name,
+       COUNT(r.review_id) AS total_reviews,
+       ROUND(AVG(r.rating), 2) AS average_rating
+FROM TUTOR t
+JOIN USER u ON t.user_id = u.user_id
+LEFT JOIN BOOKING b ON t.user_id = b.tutor_id
+LEFT JOIN REVIEW r ON b.booking_id = r.booking_id
+GROUP BY t.user_id, u.first_name, u.last_name
+ORDER BY average_rating DESC, total_reviews DESC;</code></pre>
+            </details>
+
+            <div class="reviews-grid" id="reviews-grid">
+                <!-- populated by JS -->
+            </div>
+        </section>
+
+        <!-- ── ADMIN VIEW ── -->
+        <section class="view" id="view-admin">
+            <header class="view-header">
+                <div>
+                    <h1>Admin Panel</h1>
+                    <p class="view-subtitle">System administration &amp; concurrency control.</p>
+                </div>
+            </header>
+
+            <div class="admin-grid">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Concurrency Control Demo</h2>
+                    </div>
+                    <p class="card-desc">Demonstrates the exclusive lock mechanism that prevents double-booking of availability slots.</p>
+                    <details class="sql-preview open-by-default">
+                        <summary>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                            Transaction SQL
+                        </summary>
+                        <pre><code>-- Query 5: Concurrency Control
+START TRANSACTION;
+
+SELECT slot_id, slot_status 
+FROM AVAILABILITY_SLOT 
+WHERE slot_id = ? FOR UPDATE;
+-- Exclusive lock acquired
+
+UPDATE AVAILABILITY_SLOT 
+SET slot_status = 'booked' 
+WHERE slot_id = ?;
+
+INSERT INTO BOOKING (...) VALUES (...);
+
+COMMIT;</code></pre>
+                    </details>
+                    <div class="concurrency-demo" id="concurrency-demo">
+                        <div class="demo-slot-row">
+                            <label for="demo-slot-id">Slot ID:</label>
+                            <input type="number" id="demo-slot-id" value="5" min="1" max="250">
+                            <button class="btn btn-primary" id="btn-lock-slot">Acquire Lock</button>
+                        </div>
+                        <div class="demo-terminal" id="demo-terminal">
+                            <span class="terminal-prompt">mysql&gt;</span> <span class="terminal-cursor">_</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2>System Overview</h2>
+                    </div>
+                    <div class="admin-stats" id="admin-stats">
+                        <div class="admin-stat-row">
+                            <span>Total Users</span><span class="admin-stat-val">200</span>
+                        </div>
+                        <div class="admin-stat-row">
+                            <span>Active Tutors</span><span class="admin-stat-val">50</span>
+                        </div>
+                        <div class="admin-stat-row">
+                            <span>Enrolled Students</span><span class="admin-stat-val">150</span>
+                        </div>
+                        <div class="admin-stat-row">
+                            <span>Total Bookings</span><span class="admin-stat-val">100</span>
+                        </div>
+                        <div class="admin-stat-row">
+                            <span>Subjects Offered</span><span class="admin-stat-val">7</span>
+                        </div>
+                        <div class="admin-stat-row">
+                            <span>Availability Slots</span><span class="admin-stat-val">250</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card schema-card">
+                    <div class="card-header">
+                        <h2>Database Schema</h2>
+                    </div>
+                    <div class="schema-diagram" id="schema-diagram">
+                        <div class="schema-table" data-table="USER" style="--x:50px;--y:30px">
+                            <div class="schema-table-name">USER</div>
+                            <div class="schema-cols">
+                                <span class="pk">user_id</span>
+                                <span>first_name</span>
+                                <span>last_name</span>
+                                <span class="uk">email</span>
+                                <span>status</span>
+                            </div>
+                        </div>
+                        <div class="schema-table" data-table="TUTOR" style="--x:10px;--y:200px">
+                            <div class="schema-table-name">TUTOR</div>
+                            <div class="schema-cols">
+                                <span class="pk fk">user_id</span>
+                                <span>hourly_rate</span>
+                                <span>meeting_mode</span>
+                            </div>
+                        </div>
+                        <div class="schema-table" data-table="STUDENT" style="--x:200px;--y:200px">
+                            <div class="schema-table-name">STUDENT</div>
+                            <div class="schema-cols">
+                                <span class="pk fk">user_id</span>
+                                <span>major</span>
+                                <span>grad_year</span>
+                            </div>
+                        </div>
+                        <div class="schema-table" data-table="SUBJECT" style="--x:390px;--y:30px">
+                            <div class="schema-table-name">SUBJECT</div>
+                            <div class="schema-cols">
+                                <span class="pk">subject_code</span>
+                                <span>name</span>
+                                <span>level</span>
+                            </div>
+                        </div>
+                        <div class="schema-table" data-table="TUTOR_SUBJECT" style="--x:390px;--y:200px">
+                            <div class="schema-table-name">TUTOR_SUBJECT</div>
+                            <div class="schema-cols">
+                                <span class="pk fk">tutor_id</span>
+                                <span class="pk fk">subject_code</span>
+                            </div>
+                        </div>
+                        <div class="schema-table" data-table="AVAILABILITY" style="--x:10px;--y:370px">
+                            <div class="schema-table-name">AVAILABILITY_SLOT</div>
+                            <div class="schema-cols">
+                                <span class="pk">slot_id</span>
+                                <span class="fk">tutor_id</span>
+                                <span>start_time</span>
+                                <span>end_time</span>
+                                <span>mode</span>
+                            </div>
+                        </div>
+                        <div class="schema-table" data-table="BOOKING" style="--x:200px;--y:370px">
+                            <div class="schema-table-name">BOOKING</div>
+                            <div class="schema-cols">
+                                <span class="pk">booking_id</span>
+                                <span class="fk">student_id</span>
+                                <span class="fk">tutor_id</span>
+                                <span class="fk">subject_code</span>
+                                <span class="fk">slot_id</span>
+                                <span>booking_status</span>
+                            </div>
+                        </div>
+                        <div class="schema-table" data-table="PAYMENT" style="--x:420px;--y:370px">
+                            <div class="schema-table-name">PAYMENT</div>
+                            <div class="schema-cols">
+                                <span class="pk">payment_id</span>
+                                <span class="fk">booking_id</span>
+                                <span>amount</span>
+                                <span>method</span>
+                                <span>payment_status</span>
+                            </div>
+                        </div>
+                        <div class="schema-table" data-table="REVIEW" style="--x:420px;--y:540px">
+                            <div class="schema-table-name">REVIEW</div>
+                            <div class="schema-cols">
+                                <span class="pk">review_id</span>
+                                <span class="fk">booking_id</span>
+                                <span>rating</span>
+                                <span>comment</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ═══════════ BOOKING MODAL ═══════════ -->
+    <div class="modal-overlay" id="modal-overlay">
+        <div class="modal" id="booking-modal">
+            <button class="modal-close" id="modal-close">&times;</button>
+            <div class="modal-header">
+                <h2 id="modal-title">Book Session</h2>
+            </div>
+            <div class="modal-body" id="modal-body">
+                <!-- populated by JS -->
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-ghost" id="modal-cancel">Cancel</button>
+                <button class="btn btn-primary" id="modal-confirm">Confirm Booking</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════ TOAST ═══════════ -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>

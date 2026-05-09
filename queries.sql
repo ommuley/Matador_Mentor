@@ -12,7 +12,7 @@ SELECT
     a.mode,
     a.location
 FROM TUTOR t
-JOIN `USER` u 
+JOIN USER u 
     ON t.user_id = u.user_id
 JOIN TUTOR_SUBJECT ts 
     ON t.user_id = ts.tutor_id
@@ -32,7 +32,7 @@ SELECT
     COUNT(r.review_id) AS total_reviews,
     COALESCE(ROUND(AVG(r.rating), 2), 0) AS average_rating
 FROM TUTOR t
-JOIN `USER` u 
+JOIN USER u 
     ON t.user_id = u.user_id
 LEFT JOIN BOOKING b 
     ON t.user_id = b.tutor_id
@@ -59,7 +59,7 @@ JOIN SUBJECT s
     ON b.subject_code = s.subject_code
 JOIN TUTOR t 
     ON b.tutor_id = t.user_id
-JOIN `USER` tutor_user 
+JOIN USER tutor_user 
     ON t.user_id = tutor_user.user_id
 JOIN AVAILABILITY_SLOT a 
     ON b.slot_id = a.slot_id

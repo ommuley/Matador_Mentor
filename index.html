@@ -221,18 +221,22 @@ ORDER BY avg_rating DESC;</code></pre>
                     View Generated SQL Query
                 </summary>
                 <pre><code>-- Query 3: Student's upcoming bookings
-SELECT b.booking_id, s.subject_code,
-       s.name AS subject_name,
-       u_tutor.first_name, u_tutor.last_name,
-       a.start_time, a.end_time,
-       a.mode, a.location, b.booking_status
-FROM BOOKING b
-JOIN SUBJECT s ON b.subject_code = s.subject_code
-JOIN USER u_tutor ON b.tutor_id = u_tutor.user_id
-JOIN AVAILABILITY_SLOT a ON b.slot_id = a.slot_id
-WHERE b.student_id = ?
-  AND b.booking_status IN ('confirmed','pending')
-ORDER BY a.start_time ASC;</code></pre>
+SELECT
+    booking_id,
+    subject_code,
+    subject_name,
+    tutor_first_name,
+    tutor_last_name,
+    start_time,
+    end_time,
+    mode,
+    location,
+    booking_status
+FROM student_booking_view
+WHERE student_id = ?
+  AND start_time > CURRENT_TIMESTAMP
+  AND booking_status IN ('confirmed','pending')
+ORDER BY start_time ASC;</code></pre>
             </details>
 
             <div class="tab-bar" id="booking-tabs">
@@ -261,9 +265,10 @@ ORDER BY a.start_time ASC;</code></pre>
                     View Generated SQL Query
                 </summary>
                 <pre><code>-- Query 4: Total revenue from completed sessions
-SELECT SUM(p.amount) AS total_revenue
-FROM PAYMENT p
-WHERE p.payment_status = 'completed';</code></pre>
+SELECT COALESCE(SUM(amount), 0) AS total_revenue
+FROM admin_booking_overview_view
+WHERE payment_status = 'completed'
+  AND booking_status = 'completed';</code></pre>
             </details>
 
             <div class="payments-summary" id="payments-summary">
@@ -315,14 +320,13 @@ WHERE p.payment_status = 'completed';</code></pre>
                     View Generated SQL Query
                 </summary>
                 <pre><code>-- Query 2: Aggregate tutor reviews
-SELECT t.user_id, u.first_name, u.last_name,
-       COUNT(r.review_id) AS total_reviews,
-       ROUND(AVG(r.rating), 2) AS average_rating
-FROM TUTOR t
-JOIN USER u ON t.user_id = u.user_id
-LEFT JOIN BOOKING b ON t.user_id = b.tutor_id
-LEFT JOIN REVIEW r ON b.booking_id = r.booking_id
-GROUP BY t.user_id, u.first_name, u.last_name
+SELECT
+    tutor_id,
+    first_name,
+    last_name,
+    total_reviews,
+    average_rating
+FROM tutor_performance_view
 ORDER BY average_rating DESC, total_reviews DESC;</code></pre>
             </details>
 

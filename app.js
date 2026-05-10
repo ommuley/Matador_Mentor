@@ -349,22 +349,24 @@ function renderTutors(filter = {}) {
         card.addEventListener('click', () => openBookingModal(TUTORS.find(t => t.id === +card.dataset.tutorId)));
     });
 
-    // Update SQL preview
     const sqlCode = document.getElementById('sql-code-find');
     if (sqlCode) {
-        const where = filter.subject ? `WHERE ts.subject_code = '${filter.subject}'` : '-- No subject filter applied';
-        sqlCode.textContent = `SELECT t.user_id, u.first_name, u.last_name,
-       t.hourly_rate, t.meeting_mode,
-       AVG(r.rating) AS avg_rating,
-       COUNT(r.review_id) AS total_reviews
-FROM TUTOR t
-JOIN USER u ON t.user_id = u.user_id
-JOIN TUTOR_SUBJECT ts ON t.user_id = ts.tutor_id
-LEFT JOIN BOOKING b ON t.user_id = b.tutor_id
-LEFT JOIN REVIEW r ON b.booking_id = r.booking_id
+        const where = filter.subject ? `WHERE subject_code = '${filter.subject}'` : '-- No subject filter applied';
+        sqlCode.textContent = `SELECT
+    tutor_id,
+    first_name,
+    last_name,
+    hourly_rate,
+    subject_code,
+    subject_name,
+    slot_id,
+    start_time,
+    end_time,
+    mode,
+    location
+FROM available_tutor_search_view
 ${where}
-GROUP BY t.user_id
-ORDER BY avg_rating DESC;`;
+ORDER BY start_time ASC;`;
     }
 }
 
